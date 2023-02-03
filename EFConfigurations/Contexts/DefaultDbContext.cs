@@ -10,7 +10,6 @@ public class DefaultDbContext : DbContext
     {
     }
 
-    public virtual DbSet<EfTestEntity> EfTestEntities { get; set; }
     public virtual DbSet<Doctor> Doctors { get; set; }
 
     public virtual DbSet<Patient> Patients { get; set; }
