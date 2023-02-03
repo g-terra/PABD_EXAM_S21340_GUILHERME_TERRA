@@ -3,7 +3,7 @@ using s21340_exam.Middlewares.ExceptionHandling;
 using s21340_exam.Middlewares.TransactionsHandling;
 using s21340_exam.Services;
 
-namespace PABD_EXAM_S21340.Controllers;
+namespace s21340_exam.Controllers;
 
 [ApiController]
 [Route("/api/doctors")]

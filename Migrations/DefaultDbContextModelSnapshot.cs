@@ -47,7 +47,7 @@ namespace s21340_exam.Migrations
 
                     b.HasKey("IdDoctor");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
 
                     b.HasData(
                         new
@@ -64,24 +64,6 @@ namespace s21340_exam.Migrations
                             FirstName = "Pablo",
                             LastName = "Escobar"
                         });
-                });
-
-            modelBuilder.Entity("s21340_exam.EFConfigurations.Entities.EfTestEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EfTestEntities");
                 });
 
             modelBuilder.Entity("s21340_exam.EFConfigurations.Entities.Medicament", b =>
@@ -109,7 +91,7 @@ namespace s21340_exam.Migrations
 
                     b.HasKey("IdMedicament");
 
-                    b.ToTable("Medicaments");
+                    b.ToTable("Medicaments", (string)null);
 
                     b.HasData(
                         new
@@ -158,7 +140,7 @@ namespace s21340_exam.Migrations
 
                     b.HasKey("IdPatient");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Patients", (string)null);
 
                     b.HasData(
                         new
@@ -203,7 +185,7 @@ namespace s21340_exam.Migrations
 
                     b.HasIndex("IdPatient");
 
-                    b.ToTable("Prescriptions");
+                    b.ToTable("Prescriptions", (string)null);
 
                     b.HasData(
                         new
@@ -252,7 +234,7 @@ namespace s21340_exam.Migrations
 
                     b.HasIndex("IdMedicament");
 
-                    b.ToTable("PrescriptionMedicaments");
+                    b.ToTable("PrescriptionMedicaments", (string)null);
 
                     b.HasData(
                         new

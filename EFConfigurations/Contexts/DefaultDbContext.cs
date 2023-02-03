@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using s21340_exam.EFConfigurations.Entities;
-using s21340_exam.EFConfigurations.Seeds;
+using s21340_exam.EFConfigurations.EntityTypeConfiguration;
 
 namespace s21340_exam.EFConfigurations.Contexts;
 
@@ -22,16 +22,11 @@ public class DefaultDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<PrescriptionMedicament>().HasKey(
-            pm => new
-            {
-                pm.IdPrescription, pm.IdMedicament
-            });
-
-        modelBuilder.ApplyConfiguration(new DoctorsSeed());
-        modelBuilder.ApplyConfiguration(new PatientSeed());
-        modelBuilder.ApplyConfiguration(new MedicamentSeed());
-        modelBuilder.ApplyConfiguration(new PrescriptionSeed());
-        modelBuilder.ApplyConfiguration(new PrescriptionMedicamentSeed());
+   
+        modelBuilder.ApplyConfiguration(new DoctorsEntityTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new PatientEntityTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new MedicamentEntityTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new PrescriptionEntityTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new PrescriptionMedicamentEntityTypeConfiguration());
     }
 }

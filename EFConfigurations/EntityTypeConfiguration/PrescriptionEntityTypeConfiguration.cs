@@ -2,12 +2,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using s21340_exam.EFConfigurations.Entities;
 
-namespace s21340_exam.EFConfigurations.Seeds;
+namespace s21340_exam.EFConfigurations.EntityTypeConfiguration;
 
-public class PrescriptionSeed : IEntityTypeConfiguration<Prescription>
+public class PrescriptionEntityTypeConfiguration : IEntityTypeConfiguration<Prescription>
 {
     public void Configure(EntityTypeBuilder<Prescription> builder)
     {
+        builder.HasKey(e => e.IdPrescription);
+        builder.Property(e => e.IdPrescription).ValueGeneratedOnAdd();
+        builder.Property(e => e.Date).IsRequired();
+        builder.Property(e => e.DueDate).IsRequired();
+        builder.HasOne(e => e.Patient).WithMany(e => e.Prescriptions).HasForeignKey(e => e.IdPatient);
+        builder.HasOne(e => e.Doctor).WithMany(e => e.Prescriptions).HasForeignKey(e => e.IdDoctor);
+
+        
         var baseDate = new DateTime(2023, 01, 01);
 
         builder.HasData(

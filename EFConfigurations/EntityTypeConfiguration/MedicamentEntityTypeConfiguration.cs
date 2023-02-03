@@ -2,12 +2,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using s21340_exam.EFConfigurations.Entities;
 
-namespace s21340_exam.EFConfigurations.Seeds;
+namespace s21340_exam.EFConfigurations.EntityTypeConfiguration;
 
-public class MedicamentSeed : IEntityTypeConfiguration<Medicament>
+public class MedicamentEntityTypeConfiguration : IEntityTypeConfiguration<Medicament>
 {
     public void Configure(EntityTypeBuilder<Medicament> builder)
     {
+        builder.HasKey(e => e.IdMedicament);
+        builder.Property(e=>e.IdMedicament).ValueGeneratedOnAdd();
+        builder.Property(e => e.Name).HasMaxLength(100).IsRequired();
+        builder.Property(e => e.Description).HasMaxLength(100).IsRequired();
+        builder.Property(e => e.Type).HasMaxLength(100).IsRequired();
         builder.HasData(
             new Medicament
             {

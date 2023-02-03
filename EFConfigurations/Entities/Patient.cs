@@ -5,14 +5,10 @@ namespace s21340_exam.EFConfigurations.Entities;
 
 public class Patient
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int IdPatient { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public DateTime BirthDate { get; set; }
 
-    [Required] [MaxLength(100)] public string FirstName { get; set; } 
-    [Required] [MaxLength(100)] public string LastName { get; set; } 
-    [Required] public DateTime BirthDate { get; set; }
-    
     public virtual ICollection<Prescription> Prescriptions { get; set; } = new HashSet<Prescription>();
-
 }
